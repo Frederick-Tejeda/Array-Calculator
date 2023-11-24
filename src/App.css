@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+main{
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	background: blue
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main #app{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80vw;
+	max-width: 700px;
+	height: 80vh;
+	background: red;
+	border-radius: 10px;
+	padding: 1% 2%;
+	display: flex;
+	flex-direction: column;
+	
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main #app section{
+	background-color: green
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main #app #Arrays{
+	width: calc(100% - 4%);
+	height: 40%;
+	display: flex;
+	padding: 1% 2%;
+	display: flex;
+	justify-content: space-around;
+	background-color: yellow
 }
 
-.App-link {
-  color: #61dafb;
+main #app #Arrays article{
+	width: 40%;
+	height: 100%;
+	background: gray
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main #app #Arrays article .ArrayA-B{
+	width: calc(100% - 4%);
+	height: calc(100% - 4%);
+	overflow: auto;
+	padding: 2% 2%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 15px;
 }
+
+main #app #Arrays article .ArrayA-B div{
+	width: 100%;
+	height: 20px;
+	display: flex;
+	align-items: flex-start;
+	gap: 10px
+}
+
+main #app #Arrays article .ArrayA-B div input{
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	border-radius: 3px
+}
+
+main #app #result-array{
+	width: calc(100% - 4%);
+	height: 40%;
+	display: flex;
+	padding: 1% 2%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background-color: yellow
+}
+
+main #app #result-array article{
+	width: 40%;
+	height: 90%;
+	background: gray
+}
+
+main #app #result-array div{
+	width: auto;
+	height: 10%;
+	font-size: 20px;
+}
+
+#grid-container div{ text-align:center }
+
+main #app #result-array div p{ margin: 0 }
+
+main #app #input-container{
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: space-around
+}
+
+main #app #input-container label{
+	width: auto;
+	height: auto;
+	font-size: 20px;
+}
+
+main #app #input-container input{
+	width: 20px;
+	height: auto;
+	padding: 2px 5px;
+	font-size: 20px;
+	text-align: center
+}
+
+main #app #operation-container{
+	width: 100%;
+	height: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px
+}
+
+main #app #operation-container p{ margin: 0 }
