@@ -2,9 +2,9 @@ import './App.css';
 import { useState, useEffect } from 'react'
 import * as math from 'mathjs'
 
-	var arrayA = [], arrayB = []
-	var lengthArrayA = [undefined, undefined], lengthArrayB = [undefined, undefined]
-	var operation = '+'
+	var arrayA = [], arrayB = [];
+	var lengthArrayA = [undefined, undefined], lengthArrayB = [undefined, undefined];
+	var operation = '+';
 
 function App() {
 	
@@ -14,97 +14,93 @@ function App() {
 	const [operationString, setOperationString] = useState('')
 	const [operationResult, setOperationResult] = useState('')
 	
-	
-	
-	const CreateArrayA  = () =>{		
-		arrayA = []
+	const CreateArrayA  = () => {		
+		arrayA = [];
 		
-		if(Number(lengthArrayA[0]) < 1 || Number(lengthArrayA[1]) < 1) return 
+		if(Number(lengthArrayA[0]) < 1 || Number(lengthArrayA[1]) < 1) return;
 		
-		for(let y = 0; y <= Number(lengthArrayA[0]) - 1; y++){
-			arrayA[y] = []
-			for(let x = 0; x <= Number(lengthArrayA[1]) - 1; x++){
-				arrayA[y][x] = '0'
+		try{
+			for(let y = 0; y <= Number(lengthArrayA[0]) - 1; y++){
+				arrayA[y] = []
+				for(let x = 0; x <= Number(lengthArrayA[1]) - 1; x++){
+					arrayA[y][x] = '0'
+				}
+				console.log('arrayA', arrayA)
 			}
-			console.log('arrayA', arrayA)
+			setNewArrayA(arrayA)
+			console.log(`arrayA: ${arrayA} || newArrayA: ${newArrayA}`)
+			CreateArrayC()
+		}catch(err){
+			console.log(err)
 		}
-		setNewArrayA(arrayA)
-		console.log(`arrayA: ${arrayA} || newArrayA: ${newArrayA}`)
-		CreateArrayC()
 	}
 	
-	const CreateArrayB  = () =>{
-		arrayB = []
+	const CreateArrayB  = () => {
+		arrayB = [];
 		
-		if(Number(lengthArrayB[0]) < 1 || Number(lengthArrayB[1]) < 1) return 
+		if(Number(lengthArrayB[0]) < 1 || Number(lengthArrayB[1]) < 1) return;
 		
-		for(let y = 0; y <= Number(lengthArrayB[0]) - 1; y++){
-			arrayB[y] = []
-			for(let x = 0; x <= Number(lengthArrayB[1]) - 1; x++){
-				arrayB[y][x] = 0
+		try{
+			for(let y = 0; y <= Number(lengthArrayB[0]) - 1; y++){
+				arrayB[y] = []
+				for(let x = 0; x <= Number(lengthArrayB[1]) - 1; x++){
+					arrayB[y][x] = 0
+				}
+				console.log('arrayB', arrayB)
 			}
-			console.log('arrayB', arrayB)
+			setNewArrayB(arrayB)
+			console.log(`arrayB: ${arrayB} || newArrayB: ${newArrayB}`)
+			CreateArrayC()
+		}catch(err){
+			console.log(err)
 		}
-		setNewArrayB(arrayB)
-		console.log(`arrayB: ${arrayB} || newArrayB: ${newArrayB}`)
-		CreateArrayC()
 	}
 	
 	const CreateArrayC = () => {
 		
-		console.log('inputs', document.getElementsByClassName('input'))
-		if(Number(lengthArrayB[0]) && Number(lengthArrayB[1]) && Number(lengthArrayA[0]) && Number(lengthArrayA[1]) && (Number(lengthArrayB[1]) > 0 && Number(lengthArrayB[1]) > 0 && Number(lengthArrayA[0]) > 0 && Number(lengthArrayA[1]) > 0)){ 
+		try{
+			console.log('inputs', document.getElementsByClassName('input'));
 			
-			console.log(`arrayA: ${arrayA} || arrayB: ${arrayB}`)
-			
-			const mA = math.matrix(arrayA);
-			const mB = math.matrix(arrayB);	
-			
-			if(lengthArrayA[0] === lengthArrayB[0]){
-				if(lengthArrayA[1] === lengthArrayB[1]){
-					try{
-					setNewArrayC((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB)); 
-					console.log((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB))
-					}
-					catch(err){
-						console.log(err)
-						console.log(`arrayA: ${arrayA} || arrayB: ${arrayB}`)
-						setNewArrayC({"_data": "Invalid operation"})
-					}
-				}
-				return
-			}
-			
-			if(lengthArrayA[0] === lengthArrayB[1]){
-				if(lengthArrayA[1] === lengthArrayB[0]){
-					try{
-					setNewArrayC((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB)); 
-					console.log((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB))
-					}
-					catch(err){
-						console.log(err)
-						console.log(`arrayA: ${arrayA} || arrayB: ${arrayB}`)
-						setNewArrayC({"_data": "Invalid operation"})
-					}
-					
-				}
-				return
-			}
-			/*
-			console.log(`CreateC. arrayA: ${arrayA} || arrayB: ${arrayB}`)
-			
-			const mA = math.matrix(arrayA);
-			const mB = math.matrix(arrayB);
-			
-			try{
-				setNewArrayC((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB)); 
-				console.log((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB))
-			}
-			catch(err){
-				console.log(err)
+			if(Number(lengthArrayB[0]) && Number(lengthArrayB[1]) && Number(lengthArrayA[0]) && Number(lengthArrayA[1]) && (Number(lengthArrayB[1]) > 0 && Number(lengthArrayB[1]) > 0 && Number(lengthArrayA[0]) > 0 && Number(lengthArrayA[1]) > 0)){ 
+				
 				console.log(`arrayA: ${arrayA} || arrayB: ${arrayB}`)
+				
+				const mA = math.matrix(arrayA);
+				const mB = math.matrix(arrayB);	
+				
+				if(lengthArrayA[0] === lengthArrayB[0]){
+					if(lengthArrayA[1] === lengthArrayB[1]){
+						try{
+						setNewArrayC((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB)); 
+						console.log((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB))
+						}
+						catch(err){
+							console.log(err)
+							console.log(`arrayA: ${arrayA} || arrayB: ${arrayB}`)
+							setNewArrayC({"_data": "Invalid operation"})
+						}
+					}
+					return
+				}
+				
+				if(lengthArrayA[0] === lengthArrayB[1]){
+					if(lengthArrayA[1] === lengthArrayB[0]){
+						try{
+						setNewArrayC((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB)); 
+						console.log((operation === '+') ? math.add(mA, mB) : (operation === '-') ? math.subtract(mA, mB) : (operation === 'x') ? math.multiply(mA, mB) : math.divide(mA, mB))
+						}
+						catch(err){
+							console.log(err)
+							console.log(`arrayA: ${arrayA} || arrayB: ${arrayB}`)
+							setNewArrayC({"_data": "Invalid operation"})
+						}
+						
+					}
+					return
+				}
 			}
-		}*/
+		}catch(err){
+			console.log(err)
 		}
 	}
 	
@@ -127,12 +123,13 @@ function App() {
 	const SetOperation = (e) => {
 		operation = e.target.value; 
 		CreateArrayC(); 
-		console.log(e.target.value)}
+		console.log(e.target.value)
+	}
 	
 	useEffect(() => {
 		setOperationString((operation === '+') ? 'A+B' : (operation === '-') ? 'A-B' : (operation === 'x') ? 'AB' : 'A/B')
 		console.log("newArrayC['_size[0]']", newArrayC['_size[0]'])
-		setOperationResult((newArrayC['_size'] !== undefined) ? `${JSON.stringify(newArrayC._size[0])} x ${JSON.stringify(newArrayC._size[1])}` : 'nothing')
+		setOperationResult((newArrayC['_size'] !== undefined) ? `${JSON.stringify(newArrayC._size[0])} x ${JSON.stringify(newArrayC._size[1])}` : '')
 	}, [operation, newArrayC])
 	
 	
@@ -155,16 +152,16 @@ function App() {
 			</section>
 			<section id="input-container">
 				<article>
-					<label>Matrix A
+					<label>{'Matrix A '}
 						<input type="text" placeholder="3" onChange={(e) => {lengthArrayA[0] = e.target.value; console.log('lengthArrayA', lengthArrayA); CreateArrayA()}} />
-						X
+						{' X '}
 						<input type="text" placeholder="2" onChange={(e) => {lengthArrayA[1] = e.target.value; console.log('lengthArrayA', lengthArrayA); CreateArrayA()}} />
 					</label>
 				</article>
 				<article>
-					<label>Matrix B
+					<label>{'Matrix B '}
 						<input type="text" placeholder="3" onChange={(e) => {lengthArrayB[0] = e.target.value; console.log('lengthArrayB', lengthArrayB); CreateArrayB()}} />
-						X
+						{' X '}
 						<input type="text" placeholder="2" onChange={(e) => {lengthArrayB[1] = e.target.value; console.log('lengthArrayB', lengthArrayB); CreateArrayB()}} />
 					</label>
 				</article>
@@ -181,12 +178,9 @@ function App() {
 			<hr />
 			<section id="result-array">
 				<article>
-					<div id="ArrayC">
-						<div id="grid-container" style={{display: 'grid', backgroundColor: '#2196F3', gridTemplateColumns: `${(newArrayC["_size"] !== undefined) ? ' auto'.repeat(newArrayC._size[1]) : ' auto' }`}}>
-							{/*JSON.stringify(newArrayC._data)*/}
-							{(newArrayC["_data"] !== undefined) ? newArrayC._data.map((item, key) => item.map((i, key) => <div className="grid-item" key={key}>{i}</div>)) : 'nothing'}
+						<div id="ArrayC" style={{display: 'grid', placeItems: 'center', gridTemplateColumns: `${(newArrayC["_size"] !== undefined) ? ' auto'.repeat(newArrayC._size[1]) : ' auto' }`}}>
+							{(newArrayC["_data"] !== undefined) ? newArrayC._data.map((item, key) => item.map((i, key) => <div className="grid-item" key={key}>{i}</div>)) : ''}
 						</div>
-					</div>
 				</article>
 				<div>
 					<p>{operationString + ' = ' + operationResult}</p>

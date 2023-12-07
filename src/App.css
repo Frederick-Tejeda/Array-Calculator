@@ -2,7 +2,6 @@ main{
 	width: 100vw;
 	height: 100vh;
 	position: relative;
-	background: blue
 }
 
 main #app{
@@ -13,16 +12,12 @@ main #app{
 	width: 80vw;
 	max-width: 700px;
 	height: 80vh;
-	background: red;
 	border-radius: 10px;
 	padding: 1% 2%;
 	display: flex;
 	flex-direction: column;
+	border: 2px solid gray;
 	
-}
-
-main #app section{
-	background-color: green
 }
 
 main #app #Arrays{
@@ -32,7 +27,6 @@ main #app #Arrays{
 	padding: 1% 2%;
 	display: flex;
 	justify-content: space-around;
-	background-color: yellow
 }
 
 main #app #Arrays article{
@@ -43,9 +37,9 @@ main #app #Arrays article{
 
 main #app #Arrays article .ArrayA-B{
 	width: calc(100% - 4%);
-	height: calc(100% - 4%);
+	height: 100%;
+	padding: 0px 5px;
 	overflow: auto;
-	padding: 2% 2%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
@@ -78,7 +72,6 @@ main #app #result-array{
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	background-color: yellow
 }
 
 main #app #result-array article{
@@ -87,15 +80,15 @@ main #app #result-array article{
 	background: gray
 }
 
-main #app #result-array div{
-	width: auto;
-	height: 10%;
+main #app #result-array #ArrayC div{
+	width: 25px;
+	height: 25px;
 	font-size: 20px;
 }
 
-#grid-container div{ text-align:center }
+#ArrayC div{ text-align:center }
 
-main #app #result-array div p{ margin: 0 }
+main #app #result-array div p{ margin: 0; font-size: 20px }
 
 main #app #input-container{
 	width: 100%;
@@ -128,3 +121,11 @@ main #app #operation-container{
 }
 
 main #app #operation-container p{ margin: 0 }
+
+#ArrayC{
+	width: 100%;
+	height: 100%;
+	overflow: auto
+}
+
+hr{width: 100%; height: 1px}
